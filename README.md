@@ -1,2 +1,2 @@
 # Rock-Paper-Scissors-Game
-you have to have time andr andom module on your computer.
+you have to have time and random module on your computer.
