@@ -1,160 +1,74 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+import random,time
 
-# C extensions
-*.so
+possibleMoves = ["rock","paper","scissors"]
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+print("welcome to Rock Paper Scissors Game")
+print("")
+time.sleep(0.5)
+time.sleep(2)
+print("Rules:")
+time.sleep(1)
+print("There is no tour limit. You just have to reach 5 points before the computer.")
+time.sleep(4)
+print("Leave the move blank, if you want to end the game.")
+time.sleep(2)
+print("")
+print("Let's start!")
+print("")
+time.sleep(2)
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+yourPoint = 0
+computersPoint = 0
+drawPoint = 0
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
-cover/
-
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-.pybuilder/
-target/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
-
-# pyenv
-#   For a library or package, you might want to ignore these files since the code is
-#   intended to run in multiple environments; otherwise, check them in:
-# .python-version
-
-# pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-#Pipfile.lock
-
-# poetry
-#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
-#poetry.lock
-
-# pdm
-#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
-#pdm.lock
-#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
-#   in version control.
-#   https://pdm.fming.dev/#use-with-ide
-.pdm.toml
-
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
-__pypackages__/
-
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# pytype static type analyzer
-.pytype/
-
-# Cython debug symbols
-cython_debug/
-
-# PyCharm
-#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-#.idea/
+while yourPoint != 5 and computersPoint != 5:
+    print(possibleMoves)
+    print("Choose your move: ",end="")
+    computersMove = random.choice(possibleMoves)
+    yourMove = input("").lower()
+    if yourMove in possibleMoves:
+        if yourMove == computersMove:
+            print("Draw")
+            print("")
+            time.sleep(0.5)
+            drawPoint = drawPoint + 1
+        elif yourMove == "paper" and computersMove == "scissors":
+            print("Computer won the tour")
+            print("")
+            time.sleep(0.5)
+            computersPoint = computersPoint + 1
+        elif yourMove == "rock" and computersMove == "paper":
+            print("Computer won the tour")
+            print("")
+            time.sleep(0.5)
+            computersPoint = computersPoint + 1
+        elif yourMove == "scissors" and computersMove == "rock":
+            print("Computer won the tour")
+            print("")
+            time.sleep(0.5)
+            computersPoint = computersPoint + 1
+        else:
+            print("You won the tour")
+            print("")
+            time.sleep(0.5)
+            yourPoint = yourPoint + 1
+    else:
+        if yourMove == "":
+            print("Game over")
+            break
+        else:
+            print("Please choose legal move! ")
+            print("")
+            time.sleep(0.5)
+if yourPoint > computersPoint:
+    print(f"Your Point {yourPoint} - {computersPoint} Computer's Point")
+    print(f"You drew {drawPoint} times")
+    print("you won the game, Congratulations! ")
+elif yourPoint < computersPoint:
+    print(f"Your Point {yourPoint} - {computersPoint} Computer's Point")
+    print(f"You drew {drawPoint} times")
+    print("you lost the game ")
+else:
+    print(f"Your Point {yourPoint} - {computersPoint} Computer's Point")
+    print(f"You drew {drawPoint} times")
+    print("Draw")
